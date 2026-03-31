@@ -246,13 +246,13 @@ const ICONS = {
 
 const QS = [
   {theme:'Positionnement',text:'Pensez-vous que l\'on peut être juge et partie ?',opts:['Oui','Non','Difficile'],scores:[1,3,2]},
-  {theme:'Positionnement',text:'Pensez-vous que les mots ont une influence ?',opts:['C\'est évident','Pas du tout'],scores:[1,3]},
-  {theme:'Réaction',text:'En cas d\'urgence, comment réagissez-vous ?',opts:['J\'agis et réfléchis','Je pose les bases et agis','Je cherche à déléguer'],scores:[3,1,2]},
-  {theme:'Réaction',text:'Vers qui vous tournez-vous pour avoir du soutien ?',opts:['Personne','Du gratuit / internet','J\'ai mon équipe (Avocat, proches, artisans…)'],scores:[3,2,1]},
+  {theme:'Positionnement',text:'Pensez-vous que les mots ont une influence dans votre dossier ?',opts:['C\'est évident','Pas du tout'],scores:[1,3]},
+  {theme:'Réaction',text:'En cas d\'urgence, que faites-vous en premier ?',opts:['J\'agis','Je pose les bases','Je cherche à déléguer'],scores:[3,1,2]},
+  {theme:'Réaction',text:'Vers qui vous tournez-vous pour avoir aide/soutien ?',opts:['Personne','Du gratuit / internet','J\'ai mon équipe (Avocat, proches, artisans…)'],scores:[3,2,1]},
   {theme:'Compétence',text:'Connaissez-vous les articles les plus utiles du droit commun ?',opts:['Oui','Non','C\'est inutile'],scores:[1,3,2]},
   {theme:'Compétence',text:'Savez-vous chiffrer un préjudice, même immatériel ?',opts:['Oui','Non'],scores:[1,3]},
-  {theme:'Posture',text:'Quand un événement vous touche personnellement, vous…',opts:['Vous débrouillez seul(e)','Vous emportez facilement','Posez beaucoup de questions'],scores:[2,3,1]},
-  {theme:'Posture',text:'Quelle serait votre solution idéale ?',opts:['Vous défendre efficacement','Récupérer plus d\'argent','Maîtriser les pouvoirs de votre assurance'],scores:[1,2,3]}
+  {theme:'Posture',text:'Quand un événement vous touche, vous avez tendance à…',opts:['Encaisser sans rien dire','Vous énerver','Vouloir tout gérer'],scores:[2,3,1]},
+  {theme:'Posture',text:'Vous cherchez à :',opts:['Mieux comprendre','Récupérer plus d\'argent','Maîtriser les règles'],scores:[1,2,3]}
 ];
 
 const DEBRIEF = {
@@ -266,7 +266,7 @@ const DEBRIEF = {
   },
   'Compétence':{
     body:'Le droit commun et le chiffrage sont les deux piliers d\'un dossier solide. Sans eux, vous dépendez entièrement de l\'évaluation de la partie adverse. Connaître les bases change la donne.',
-    example:'Cas concret — Un préjudice immatériel (perte de jouissance, privation d\'usage) est souvent chiffré par l\'assureur mais rarement vérifié. La méthode permet de le contrôler et de le valoriser.'
+    example:'Cas concret — Un préjudice immatériel (perte de chance ou indemnité de gré à gré) est souvent chiffré par l\'assureur mais rarement vérifié. La méthode permet de le contrôler et de le valoriser.'
   },
   'Posture':{
     body:'Votre posture émotionnelle influence directement la gestion de votre dossier. La colère isole, la passivité expose. Poser les bonnes questions au bon moment est une compétence qui s\'apprend.',
