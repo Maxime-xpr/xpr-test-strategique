@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>XPR — Quel expert êtes-vous ?</title>
+<meta name="color-scheme" content="dark">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.12);
+  --accent:#c8f060;
+  --accent2:rgba(200,240,96,.08);
+  --text:#f0f0ee;
+  --text2:#e0e0dc;
+  --text3:#7a7972;
+  --r:4px;
+  --r2:8px;
+  --head:'IBM Plex Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{background:#0a0a0a}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+
+/* ── ANIMATED BACKGROUND ── */
+.bg-anim{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.bg-grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(200,240,96,.1) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(200,240,96,.1) 1px,transparent 1px);
+background-size:60px 60px;animation:gridDrift 20s linear infinite}
+@keyframes gridDrift{from{transform:translate(0,0)}to{transform:translate(60px,60px)}}
+
+.bg-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:orbFloat 12s ease-in-out infinite}
+.bg-orb-1{width:400px;height:400px;background:var(--accent);top:-100px;right:-100px;animation-delay:0s}
+.bg-orb-2{width:300px;height:300px;background:#60f0c8;bottom:-80px;left:-80px;animation-delay:-4s;animation-duration:16s}
+.bg-orb-3{width:200px;height:200px;background:#f0a840;top:50%;left:50%;animation-delay:-8s;animation-duration:14s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.1)}50%{transform:translate(-20px,30px) scale(.9)}75%{transform:translate(40px,20px) scale(1.05)}}
+
+.bg-scan{position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent 5%,var(--accent) 50%,transparent 95%);opacity:.25;animation:scanLine 6s linear infinite;box-shadow:0 0 12px rgba(200,240,96,.3)}
+@keyframes scanLine{from{top:-3px}to{top:100%}}
+
+header{padding:20px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;z-index:10}
+.logo{font-size:14px;letter-spacing:.14em;color:var(--text3)}.logo strong{color:var(--accent);font-weight:500}
+.badge{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:2px}
+
+main{flex:1;max-width:640px;width:100%;margin:0 auto;padding:0 24px;position:relative;z-index:5}
+.screen{display:none;flex-direction:column;width:100%}
+.screen.active{display:flex}
+
+/* ── INTRO ── */
+#screen-intro{padding:100px 0 60px;gap:48px;align-items:center;text-align:center}
+@keyframes introIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+#screen-intro.active .intro-label{animation:introIn .5s .1s cubic-bezier(.22,1,.36,1) both}
+#screen-intro.active .intro-title{animation:introIn .5s .25s cubic-bezier(.22,1,.36,1) both}
+#screen-intro.active .intro-sub{animation:introIn .5s .4s cubic-bezier(.22,1,.36,1) both}
+#screen-intro.active .btn-start{animation:introIn .5s .55s cubic-bezier(.22,1,.36,1) both}
+#screen-intro.active .disclaimer{animation:introIn .5s .65s cubic-bezier(.22,1,.36,1) both}
+
+.intro-label{font-size:14px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-family:var(--mono);opacity:0}
+.intro-title{font-family:var(--head);font-size:clamp(34px,7vw,56px);font-weight:700;line-height:1.18;letter-spacing:-.03em;color:var(--text);opacity:0}
+.intro-sub{font-size:17px;color:var(--text2);line-height:1.85;max-width:480px;opacity:0}
+.btn-start{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#0a0a0a;font-family:var(--head);font-size:15px;font-weight:600;padding:16px 32px;border:none;border-radius:var(--r);cursor:pointer;transition:background .15s,transform .1s,box-shadow .2s;letter-spacing:.02em;align-self:center;opacity:0;box-shadow:0 0 0 0 rgba(200,240,96,0)}
+.btn-start:hover{background:#d4f570;box-shadow:0 0 30px rgba(200,240,96,.2)}
+.btn-start:active{transform:scale(.97)}
+.disclaimer{font-size:13px;color:var(--text3);line-height:1.7;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r);opacity:0}
+
+/* ── SARAH ── */
+#screen-sarah,#screen-sarah-out{min-height:calc(100vh - 61px);justify-content:center;align-items:center;padding:48px 0}
+.sarah-container{width:100%;max-width:440px;display:flex;flex-direction:column;gap:4px}
+.sarah-header{display:flex;align-items:center;gap:10px;padding-bottom:0}
+.sarah-avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:13px;font-weight:600;color:#0a0a0a;flex-shrink:0}
+.sarah-name{font-family:var(--head);font-size:15px;font-weight:600;color:var(--text)}
+.sarah-bubble{background:var(--bg2);border:1px solid var(--border);border-radius:2px 12px 12px 12px;padding:18px 20px;font-size:15px;color:var(--text2);line-height:1.75;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.sarah-bubble.visible{opacity:1;transform:translateY(0)}
+.sarah-typing{display:flex;align-items:center;gap:4px;padding:6px 16px;opacity:0;transition:opacity .2s ease}
+.sarah-typing.visible{opacity:1}
+.sarah-typing span{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:typingDot 1.2s infinite}
+.sarah-typing span:nth-child(2){animation-delay:.2s}
+.sarah-typing span:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,60%,100%{opacity:.25;transform:scale(.8)}30%{opacity:1;transform:scale(1)}}
+.sarah-loading{display:flex;align-items:center;gap:10px;padding:16px 0;opacity:0;transition:opacity .3s ease}
+.sarah-loading.visible{opacity:1}
+.sarah-loading-spinner{width:16px;height:16px;border:1.5px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+.sarah-loading-txt{font-size:13px;color:var(--text3);letter-spacing:.06em}
+
+/* ── QUESTION ── */
+#screen-chat{min-height:calc(100vh - 61px);padding:0}
+.q-shell{width:100%;display:flex;flex-direction:column;min-height:calc(100vh - 61px);text-align:center}
+@keyframes qIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes qOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-10px)}}
+@keyframes staggerIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.q-shell.in{animation:qIn .25s cubic-bezier(.22,1,.36,1) forwards}
+.q-shell.out{animation:qOut .15s ease forwards}
+.q-shell.in .q-nav{animation:staggerIn .3s .05s cubic-bezier(.22,1,.36,1) both}
+.q-shell.in .q-body{animation:staggerIn .3s .15s cubic-bezier(.22,1,.36,1) both}
+.q-nav{display:flex;align-items:center;justify-content:space-between;width:100%;padding:20px 0;flex-shrink:0}
+.q-back{display:flex;align-items:center;gap:6px;background:transparent;border:none;cursor:pointer;font-family:var(--mono);font-size:13px;color:var(--text3);padding:0;transition:color .15s;letter-spacing:.04em}
+.q-back:hover{color:var(--text2)}
+.q-back:disabled{opacity:.2;cursor:not-allowed}
+.q-progress{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text3);letter-spacing:.06em}
+.q-bar{width:64px;height:1px;background:var(--border2)}
+.q-bar-fill{height:100%;background:var(--accent);transition:width .4s ease}
+
+.q-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.q-icon{width:48px;height:48px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center}
+.q-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.q-num{font-size:12px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono)}
+.q-text{font-family:var(--head);font-size:clamp(21px,4vw,32px);font-weight:600;line-height:1.35;letter-spacing:-.015em;color:var(--text);max-width:520px}
+.q-opts{display:flex;flex-direction:column;gap:8px;width:100%;max-width:520px}
+.q-opt{display:flex;align-items:center;justify-content:center;gap:14px;background:transparent;border:1px solid var(--border);border-radius:var(--r);padding:15px 18px;cursor:pointer;font-family:var(--mono);font-size:17px;color:var(--text2);text-align:center;transition:border-color .15s,color .15s,background .15s,box-shadow .15s;width:100%;letter-spacing:.02em;line-height:1.5}
+.q-opt:hover{border-color:var(--border2);color:var(--text);background:var(--bg2);box-shadow:0 0 20px rgba(200,240,96,.04)}
+.q-opt:active{transform:scale(.995)}
+.q-letter{width:22px;height:22px;border-radius:50%;border:1px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3);transition:all .15s}
+.q-opt:hover .q-letter{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── RAPPORT ── */
+#screen-report{padding:24px 0 80px;gap:48px;align-items:center;text-align:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+#screen-report.active .rep-header{animation:fadeUp .4s .1s cubic-bezier(.22,1,.36,1) both}
+#screen-report.active .gauge-block{animation:fadeUp .4s .3s cubic-bezier(.22,1,.36,1) both}
+#screen-report.active .blocs-section{animation:fadeUp .4s .5s cubic-bezier(.22,1,.36,1) both}
+#screen-report.active .cta{animation:fadeUp .4s .7s cubic-bezier(.22,1,.36,1) both}
+#screen-report.active .resources{animation:fadeUp .4s .9s cubic-bezier(.22,1,.36,1) both}
+.rep-header{display:flex;flex-direction:column;gap:10px;padding-bottom:24px;border-bottom:1px solid var(--border);align-items:center;text-align:center;width:100%}
+.rep-label{font-size:12px;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;font-family:var(--mono)}
+.rep-title{font-family:var(--head);font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.25}
+
+.gauge-block{display:flex;flex-direction:column;gap:20px;padding:28px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);width:100%}
+.gauge-track{display:flex;height:6px;border-radius:3px;overflow:hidden;gap:2px}
+.gauge-seg{flex:1;border-radius:3px;opacity:.25;transition:opacity .6s ease}
+.gauge-seg.active{opacity:1}
+.gauge-level{font-family:var(--head);font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.gauge-desc{font-size:15px;color:var(--text2);line-height:1.75}
+.gauge-sub{font-size:14px;color:var(--text3);line-height:1.7;padding-top:8px;border-top:1px solid var(--border)}
+
+.blocs-section{display:flex;flex-direction:column;gap:16px;width:100%}
+.sec-label{font-size:12px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+.bloc{display:flex;flex-direction:column;gap:12px;padding:22px;border:1px solid var(--border);border-radius:var(--r);transition:border-color .15s,background .15s}
+.bloc:hover{border-color:var(--border2);background:var(--bg2)}
+.bloc.top{border-color:rgba(200,240,96,.2);background:rgba(200,240,96,.025)}
+.bloc.top:hover{border-color:rgba(200,240,96,.35);background:rgba(200,240,96,.045)}
+.bloc-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bloc-theme{font-family:var(--head);font-size:15px;font-weight:600}
+.bloc-score{font-size:13px;color:var(--text3)}
+.bloc-score strong{font-size:20px;font-family:var(--head);font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.bloc-bar-track{height:1px;background:var(--border);border-radius:1px;overflow:hidden}
+.bloc-bar-fill{height:100%;border-radius:1px}
+.bloc-text{font-size:14px;color:var(--text2);line-height:1.75}
+.bloc-example{font-size:13px;color:var(--text3);line-height:1.65;padding-top:10px;border-top:1px solid var(--border);font-style:italic}
+.bloc-top-badge{font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono)}
+
+.cta{padding:28px;border:1px solid rgba(200,240,96,.18);border-radius:var(--r2);display:flex;flex-direction:column;gap:14px;background:rgba(200,240,96,.03);width:100%}
+.cta-text{font-family:var(--head);font-size:16px;font-weight:600;line-height:1.45}
+.cta-sub{font-size:14px;color:var(--text2);line-height:1.7}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:4px;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#0a0a0a;font-family:var(--head);font-size:14px;font-weight:600;padding:13px 22px;border:none;border-radius:var(--r);cursor:pointer;transition:background .15s,box-shadow .2s;letter-spacing:.02em;text-decoration:none}
+.btn-primary:hover{background:#d4f570;box-shadow:0 0 24px rgba(200,240,96,.18)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text2);font-family:var(--mono);font-size:14px;padding:12px 18px;border:1px solid var(--border2);border-radius:var(--r);cursor:pointer;transition:border-color .15s,color .15s;letter-spacing:.04em;text-decoration:none}
+.btn-secondary:hover{border-color:var(--text2);color:var(--text)}
+
+.resources{display:flex;flex-direction:column;gap:8px;width:100%}
+.res-label{font-size:12px;color:var(--text);letter-spacing:.12em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+.res-item{font-size:14px;color:var(--text3);padding:10px 14px;border:1px solid var(--border);border-radius:var(--r);line-height:1.6}
+.res-item strong{color:var(--text2);font-weight:500}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+@media(max-width:580px){
+  header{padding:16px 20px}
+  main{padding:0 16px}
+  #screen-intro{padding:64px 0 48px;gap:36px}
+  #screen-chat{padding:32px 0}
+  .sarah-container{max-width:100%}
+  .bg-orb-1{width:250px;height:250px}
+  .bg-orb-2{width:180px;height:180px}
+  .bg-orb-3{width:120px;height:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-anim">
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-scan"></div>
+</div>
+
+<header>
+  <div class="logo"><strong>XPR</strong> — Expertise Privée</div>
+  <div class="badge">Diagnostic</div>
+</header>
+
+<main>
+
+<div id="screen-intro" class="screen active">
+  <div class="intro-label">Test stratégique</div>
+  <h1 class="intro-title">Quel expert<br>êtes-vous ?</h1>
+  <p class="intro-sub">Les questions que personne ne vous a posées.<br>Votre analyse depuis l'intérieur du système.</p>
+  <button class="btn-start" onclick="launchSarah()">Commencer →</button>
+  <div class="disclaimer">Test ne constituant pas un conseil juridique.</div>
+</div>
+
+<div id="screen-sarah" class="screen">
+  <div class="sarah-container">
+    <div class="sarah-header"><div class="sarah-avatar">S</div><div class="sarah-name">Sarah</div></div>
+    <div class="sarah-typing" id="sarah-typing"><span></span><span></span><span></span></div>
+    <div class="sarah-bubble" id="sarah-bubble">Bonjour et bienvenue.<br><br>Voyons quel genre d'expert êtes-vous.</div>
+    <div class="sarah-loading" id="sarah-loading"><div class="sarah-loading-spinner"></div><div class="sarah-loading-txt">Nous chargeons vos questions…</div></div>
+  </div>
+</div>
+
+<div id="screen-sarah-out" class="screen">
+  <div class="sarah-container">
+    <div class="sarah-header"><div class="sarah-avatar">S</div><div class="sarah-name">Sarah</div></div>
+    <div class="sarah-typing" id="sarah-out-typing"><span></span><span></span><span></span></div>
+    <div class="sarah-bubble" id="sarah-out-bubble">Merci pour vos réponses, nous les analysons.</div>
+    <div class="sarah-loading" id="sarah-out-loading"><div class="sarah-loading-spinner"></div><div class="sarah-loading-txt">Analyse en cours…</div></div>
+  </div>
+</div>
+
+<div id="screen-chat" class="screen"><div class="q-shell" id="q-shell"></div></div>
+<div id="screen-report" class="screen"></div>
+
+</main>
+
+<script>
+// ─── ICONS SVG par thématique ────────────────────────────────────────────────
+const ICONS = {
+  'Positionnement': '<svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg>',
+  'Réaction': '<svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  'Compétence': '<svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>',
+  'Posture': '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg>'
+};
+
+const QS = [
+  {theme:'Positionnement',text:'Pensez-vous que l\'on peut être juge et partie ?',opts:['Oui','Non','Difficile'],scores:[1,3,2]},
+  {theme:'Positionnement',text:'Pensez-vous que les mots ont une influence ?',opts:['C\'est évident','Pas du tout'],scores:[1,3]},
+  {theme:'Réaction',text:'En cas d\'urgence, comment réagissez-vous ?',opts:['J\'agis et réfléchis','Je pose les bases et agis','Je cherche à déléguer'],scores:[3,1,2]},
+  {theme:'Réaction',text:'Vers qui vous tournez-vous pour avoir du soutien ?',opts:['Personne','Du gratuit / internet','J\'ai mon équipe (Avocat, proches, artisans…)'],scores:[3,2,1]},
+  {theme:'Compétence',text:'Connaissez-vous les articles les plus utiles du droit commun ?',opts:['Oui','Non','C\'est inutile'],scores:[1,3,2]},
+  {theme:'Compétence',text:'Savez-vous chiffrer un préjudice, même immatériel ?',opts:['Oui','Non'],scores:[1,3]},
+  {theme:'Posture',text:'Quand un événement vous touche personnellement, vous…',opts:['Vous débrouillez seul(e)','Vous emportez facilement','Posez beaucoup de questions'],scores:[2,3,1]},
+  {theme:'Posture',text:'Quelle serait votre solution idéale ?',opts:['Vous défendre efficacement','Récupérer plus d\'argent','Maîtriser les pouvoirs de votre assurance'],scores:[1,2,3]}
+];
+
+const DEBRIEF = {
+  'Positionnement':{
+    body:'Le conflit d\'intérêt est structurel dans l\'assurance. Celui qui évalue votre sinistre est mandaté par celui qui paie. Les mots de votre déclaration fixent un cadre juridique difficile à élargir ensuite.',
+    example:'Cas concret — Une déclaration mal formulée peut transformer un sinistre couvert en sinistre refusé. La méthode identifie ces pièges avant qu\'ils ne se referment.'
+  },
+  'Réaction':{
+    body:'La façon dont vous réagissez face à un problème détermine votre position dans le dossier. Agir sous pression ou sans méthode expose à des erreurs coûteuses. S\'entourer change le rapport de force.',
+    example:'Cas concret — Un assuré qui contacte son assureur sous le coup de l\'émotion donne souvent trop d\'informations, mal formulées. La méthode structure la réponse avant le contact.'
+  },
+  'Compétence':{
+    body:'Le droit commun et le chiffrage sont les deux piliers d\'un dossier solide. Sans eux, vous dépendez entièrement de l\'évaluation de la partie adverse. Connaître les bases change la donne.',
+    example:'Cas concret — Un préjudice immatériel (perte de jouissance, privation d\'usage) est souvent chiffré par l\'assureur mais rarement vérifié. La méthode permet de le contrôler et de le valoriser.'
+  },
+  'Posture':{
+    body:'Votre posture émotionnelle influence directement la gestion de votre dossier. La colère isole, la passivité expose. Poser les bonnes questions au bon moment est une compétence qui s\'apprend.',
+    example:'Cas concret — Savoir quoi demander, à qui, et dans quel ordre transforme un dossier dormant en dossier actif. La méthode fournit cette séquence.'
+  }
+};
+
+let state={answers:[],totalScore:0};
+let _locked=false;
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function resetSarahScreen(prefix){
+  const t=document.getElementById(prefix+'-typing'),b=document.getElementById(prefix+'-bubble'),l=document.getElementById(prefix+'-loading');
+  if(t)t.classList.remove('visible');if(b)b.classList.remove('visible');if(l)l.classList.remove('visible');
+}
+
+function launchSarah(){
+  resetSarahScreen('sarah');showScreen('sarah');
+  const typing=document.getElementById('sarah-typing'),bubble=document.getElementById('sarah-bubble'),loading=document.getElementById('sarah-loading');
+  typing.classList.add('visible');
+  setTimeout(()=>{typing.classList.remove('visible');bubble.classList.add('visible');},1200);
+  setTimeout(()=>{loading.classList.add('visible');},5200);
+  setTimeout(()=>{startQ();},7700);
+}
+function launchSarahOut(){
+  resetSarahScreen('sarah-out');showScreen('sarah-out');
+  const typing=document.getElementById('sarah-out-typing'),bubble=document.getElementById('sarah-out-bubble'),loading=document.getElementById('sarah-out-loading');
+  typing.classList.add('visible');
+  setTimeout(()=>{typing.classList.remove('visible');bubble.classList.add('visible');},1000);
+  setTimeout(()=>{loading.classList.add('visible');},2000);
+  setTimeout(()=>{buildReport();},6000);
+}
+
+function startQ(){state={answers:[],totalScore:0};showScreen('chat');paintQ(0);}
+
+function paintQ(idx){
+  _locked=false;
+  const q=QS[idx],shell=document.getElementById('q-shell'),pct=Math.round((idx/QS.length)*100);
+  const icon=ICONS[q.theme]||'';
+  shell.innerHTML=`
+    <div class="q-nav">
+      <button class="q-back" id="back-btn" ${idx===0?'disabled':''}>← Précédent</button>
+      <div class="q-progress"><span>${idx+1} / ${QS.length}</span><div class="q-bar"><div class="q-bar-fill" style="width:${pct}%"></div></div><span>${pct}%</span></div>
+    </div>
+    <div class="q-body">
+      <div class="q-icon">${icon}</div>
+      <div class="q-num">— ${q.theme}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="q-opts" id="q-opts">
+        ${q.opts.map((o,i)=>`<button class="q-opt" data-i="${i}"><span class="q-letter">${'ABCDEFG'[i]}</span>${o}</button>`).join('')}
+      </div>
+    </div>`;
+  shell.classList.remove('out');shell.classList.add('in');
+  setTimeout(()=>shell.classList.remove('in'),300);
+  document.getElementById('back-btn').addEventListener('click',()=>{
+    if(idx===0||_locked)return;const removed=state.answers.pop();if(removed)state.totalScore-=removed.score;
+    shell.classList.add('out');setTimeout(()=>paintQ(idx-1),160);
+  });
+  document.querySelectorAll('#q-opts .q-opt').forEach((btn,i)=>{
+    btn.addEventListener('click',()=>{
+      if(_locked)return;_locked=true;
+      document.querySelectorAll('#q-opts .q-opt').forEach(b=>{if(b!==btn)b.style.opacity='.35';});
+      btn.style.borderColor='var(--accent)';
+      const letter=btn.querySelector('.q-letter');letter.style.background='var(--accent)';letter.style.borderColor='var(--accent)';letter.style.color='#0a0a0a';
+      state.answers.push({theme:q.theme,score:q.scores[i],answer:q.opts[i]});state.totalScore+=q.scores[i];
+      setTimeout(()=>{
+        if(idx<QS.length-1){shell.classList.add('out');setTimeout(()=>paintQ(idx+1),160);}
+        else{shell.classList.add('out');setTimeout(()=>launchSarahOut(),220);}
+      },280);
+    });
+  });
+  requestAnimationFrame(()=>shell.scrollIntoView({behavior:'smooth',block:'center'}));
+}
+
+function buildReport(){
+  const minScore=QS.reduce((s,q)=>s+Math.min(...q.scores),0),maxScore=QS.reduce((s,q)=>s+Math.max(...q.scores),0);
+  const raw=state.totalScore,score100=Math.round(((raw-minScore)/(maxScore-minScore))*100);
+  let level,levelColor,levelDesc,activeIdx;
+  if(score100<35){level='Autonome';levelColor='#c8f060';levelDesc='Vous avez des réflexes. Notre méthode vous garantit que rien ne vous échappe.';activeIdx=0;}
+  else if(score100<65){level='En recherche';levelColor='#f0a840';levelDesc='Vous savez que des solutions existent. Notre méthode les identifie et les couvre pour vous.';activeIdx=1;}
+  else{level='Prêt à agir';levelColor='#f06060';levelDesc='Vous cherchez des réponses concrètes. Notre méthode vous donne les leviers pour agir vous-même — avec les bons outils et le bon ordre.';activeIdx=2;}
+  const segColors=['#c8f060','#f0a840','#f06060'];
+  const themeData={};
+  state.answers.forEach(a=>{if(!themeData[a.theme])themeData[a.theme]={raw:0,max:0};themeData[a.theme].raw+=a.score;});
+  QS.forEach(q=>{if(!themeData[q.theme])themeData[q.theme]={raw:0,max:0};themeData[q.theme].max+=Math.max(...q.scores);});
+  const themes=Object.keys(DEBRIEF);
+  const themeScores=themes.map(t=>{const d=themeData[t]||{raw:0,max:3};return{theme:t,pct:d.max>0?Math.round((d.raw/d.max)*100):0};}).sort((a,b)=>b.pct-a.pct);
+  function barCol(pct){if(pct>=70)return'#f06060';if(pct>=45)return'#f0a840';return'#c8f060';}
+  const blocsHTML=themeScores.map((ts,i)=>{
+    const db=DEBRIEF[ts.theme],isTop=i===0,col=barCol(ts.pct);
+    return`<div class="bloc${isTop?' top':''}">${isTop?'<div class="bloc-top-badge">↑ Priorité identifiée</div>':''}
+      <div class="bloc-head"><div class="bloc-theme">${ts.theme}</div><div class="bloc-score"><strong>${ts.pct}</strong> /100</div></div>
+      <div class="bloc-bar-track"><div class="bloc-bar-fill" style="width:${ts.pct}%;background:${col}"></div></div>
+      <div class="bloc-text">${db.body}</div><div class="bloc-example">${db.example}</div></div>`;
+  }).join('');
+  const mailLines=['Bonjour,','','Je souhaite demander un diagnostic de mon dossier.','','--- Résultats du test XPR ---','Profil : '+level,''];
+  themeScores.forEach(ts=>{mailLines.push(ts.theme+' : '+ts.pct+'/100');});
+  mailLines.push('','Détail des réponses :');
+  state.answers.forEach((a,i)=>{mailLines.push((i+1)+'. '+QS[i].text.replace(/'/g,"'")+' → '+a.answer);});
+  mailLines.push('','Merci de me recontacter.');
+  const mailHref='mailto:gestion@xpr-conseils.com?subject='+encodeURIComponent('Demande de diagnostic — Test XPR ('+level+')')+'&body='+encodeURIComponent(mailLines.join('\n'));
+  document.getElementById('screen-report').innerHTML=`
+    <div class="rep-header"><div class="rep-label">XPR — Rapport stratégique</div><div class="rep-title">Analyse stratégique.</div></div>
+    <div class="gauge-block">
+      <div class="gauge-track">${segColors.map((c,i)=>`<div class="gauge-seg${i===activeIdx?' active':''}" style="background:${c}"></div>`).join('')}</div>
+      <div class="gauge-level" style="color:${levelColor}">${level}</div>
+      <div class="gauge-desc">${levelDesc}</div>
+      <div class="gauge-sub">Des leviers existent dans votre situation. Les identifier demande une lecture que personne ne fait pour vous — sauf si vous savez où chercher.</div>
+    </div>
+    <div class="blocs-section"><div class="sec-label">Analyse par thématique</div>${blocsHTML}</div>
+    <div class="cta">
+      <div class="cta-text">Ce test identifie vos zones d'ombre.<br>La méthode les éclaire.</div>
+      <div class="cta-sub">Les éléments ci-dessus sont basés sur les pratiques standards du système assurantiel. Votre situation peut contenir des spécificités que seule une analyse approfondie révèle.</div>
+      <div class="cta-actions">
+        <a class="btn-primary" href="https://maximehrynyk.com" target="_blank">Découvrir la méthode →</a>
+        <a class="btn-secondary" href="${mailHref}">Demander un diagnostic</a>
+        <button class="btn-secondary" onclick="launchSarah()">Recommencer</button>
+      </div>
+    </div>
+    <div class="resources">
+      <div class="res-label">Références</div>
+      <div class="res-item"><strong>IRSI</strong> — Convention dégât des eaux en immeuble</div>
+      <div class="res-item"><strong>CIDE-COP</strong> — Convention dégât des eaux en copropriété</div>
+      <div class="res-item"><strong>Convention Vol / Vandalisme</strong></div>
+      <div class="res-item"><strong>Code civil</strong> — Droit commun</div>
+      <div class="res-item"><strong>Recueil FFSA</strong> — Sinistres dommages</div>
+      <div class="res-item"><strong>Garanties à surveiller</strong> — Vétusté récupérable · Frais annexes · Honoraires expert d'assuré · Protection juridique · Relogement · Perte de loyers · Canalisations non accessibles · Valeur vénale</div>
+      <div class="res-item"><strong>Conditions d'assurance</strong> — Base de données de +150 contrats</div>
+    </div>`;
+  showScreen('report');
+}
+</script>
+</body>
+</html>
