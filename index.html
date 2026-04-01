@@ -78,8 +78,9 @@ section{padding:100px 0}
 .tension-item svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;stroke-width:2;fill:none}
 .tension-item.bad svg{stroke:var(--red)}.tension-item.good svg{stroke:var(--accent)}
 
-#definition{padding:80px 0;border-top:1px solid var(--border)}
-.def-box{margin-top:32px;padding:28px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2)}
+#definition{padding:80px 0;border-top:1px solid var(--border);position:relative;overflow:hidden}
+#definition::before{content:'';position:absolute;top:0;right:-10%;width:60%;height:100%;background:url('photo-maxime.jpeg') center center/cover no-repeat;opacity:.12;filter:blur(1.5px) grayscale(100%);pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,.6),transparent 80%);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.6),transparent 80%)}
+.def-box{margin-top:32px;padding:28px;background:rgba(17,17,17,.85);border:1px solid var(--border2);border-radius:var(--r2);position:relative;z-index:2;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .def-quote{font-family:var(--head);font-size:17px;font-weight:500;line-height:1.75;color:var(--text2);font-style:italic}
 .def-quote strong{color:var(--accent);font-style:normal;font-weight:600}
 .def-source{font-size:13px;color:var(--text3);padding-top:16px;border-top:1px solid var(--border);margin-top:16px}
@@ -409,7 +410,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
     <p class="cta-box-sub">Le diagnostic identifie vos zones d'ombre. Il ne vous engage à rien. Il vous donne une lecture que personne ne fait pour vous — sauf si vous savez où chercher.</p>
     <div class="cta-actions">
       <a class="btn-primary" href="diagnostic.html">Faire mon diagnostic →</a>
-      <a class="btn-secondary" href="mailto:gestion@xpr-conseils.com?subject=Demande%20de%20diagnostic">Écrire directement</a>
+      <a class="btn-secondary" href="/cdn-cgi/l/email-protection#cfa8aabcbba6a0a18fb7bfbde2aca0a1bcaaa6a3bce1aca0a2f0bcbaada5aaacbbf28baaa2aea1abaaeafdffabaaeafdffaba6aea8a1a0bcbba6ac">Écrire directement</a>
     </div>
   </div>
 </div>
@@ -417,7 +418,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 
 <footer><div class="wrap">XPR — Expertise Privée · Méthode d'expertise indépendante · Ce site ne constitue pas un conseil juridique.</div></footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.querySelectorAll('#faq-list .faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
     var item = this.closest('.faq-item');
@@ -438,13 +439,4 @@ var observer = new IntersectionObserver(function(entries){
   });
 }, {threshold:.12});
 document.querySelectorAll('section:not(#hero)').forEach(function(sec){
-  var targets = sec.querySelectorAll('.sec-tag,.sec-title,.sec-sub,.def-box,.steps,.tension-grid,.sin-grid,.market-cards,.market-note,.model-box,.faq-list,.cta-box,.pyramid-wrap,.pricing-grid,.pricing-note');
-  for(var i=0; i<targets.length; i++){
-    targets[i].setAttribute('data-anim','');
-    targets[i].style.opacity='0';
-  }
-  observer.observe(sec);
-});
-</script>
-</body>
-</html>
+  var targets = sec.querySelectorAll('.sec-tag,.sec-title,.sec-sub,.def-box,.steps,.tension-grid,.sin-grid,.market-cards,.market-note,.model-box,.faq-list,.cta-box,.pyramid-wrap,.pricing-grid,.pric
