@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>XPR — Expertise Privée · Méthode d'expertise indépendante</title>
-<meta name="description" content="Méthode d'expertise indépendante. Utilisez l'expertise pour vraiment obtenir ce que vous méritez en 60 minutes.">
+<meta name="description" content="Méthode d'expertise indépendante. Utilisez les règles de l'expertise pour récupérer ce que vous méritez dans vos sinistres.">
 <meta name="color-scheme" content="dark">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -49,7 +49,7 @@ section{padding:100px 0}
 .hero-title{font-family:var(--head);font-size:clamp(30px,6vw,52px);font-weight:700;line-height:1.2;letter-spacing:-.03em;color:var(--text);padding-bottom:24px}
 .hero-title em{font-style:normal;color:var(--accent)}
 .hero-sub{font-size:16px;color:var(--text2);line-height:1.85;max-width:540px;margin:0 auto;padding-bottom:40px}
-.hero-sub strong{color:var(--text);font-weight:600}
+.hero-sub strong{color:var(--text);font-weight:700}
 .hero-cta{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#0a0a0a;font-family:var(--head);font-size:15px;font-weight:600;padding:16px 32px;border:none;border-radius:var(--r);cursor:pointer;transition:all .2s;letter-spacing:.02em;text-decoration:none}
 .hero-cta:hover{background:#d4f570;box-shadow:0 0 30px rgba(200,240,96,.2);transform:translateY(-1px)}
 .hero-proof{display:flex;align-items:center;justify-content:center;gap:24px;padding-top:32px;flex-wrap:wrap}
@@ -78,12 +78,12 @@ section{padding:100px 0}
 .tension-item svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;stroke-width:2;fill:none}
 .tension-item.bad svg{stroke:var(--red)}.tension-item.good svg{stroke:var(--accent)}
 
-#definition{padding:80px 0;border-top:1px solid var(--border);position:relative;overflow:hidden}
-#definition::before{content:'';position:absolute;top:-60%;left:50%;width:100%;height:200%;transform:translateX(-50%);background:url('photo-maxime.jpeg') center 10%/cover no-repeat;opacity:.5;filter:grayscale(100%);pointer-events:none;mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.7) 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.7) 20%,transparent 70%)}
-.def-box{margin-top:32px;padding:28px;background:rgba(17,17,17,.85);border:1px solid var(--border2);border-radius:var(--r2);position:relative;z-index:2;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+/* Chess background */
+#definition{padding:60px 0 80px;border-top:1px solid var(--border);position:relative;overflow:hidden}
+#definition::before{content:'';position:absolute;top:50%;left:50%;width:100%;height:160%;transform:translate(-50%,-50%);background:url('Chest.jpg') center center/cover no-repeat;opacity:.15;filter:grayscale(30%);pointer-events:none;mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.8) 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.8) 20%,transparent 70%)}
+.def-box{padding:28px;background:rgba(17,17,17,.85);border:1px solid var(--border2);border-radius:var(--r2);position:relative;z-index:2}
 .def-quote{font-family:var(--head);font-size:17px;font-weight:500;line-height:1.75;color:var(--text2);font-style:italic}
 .def-quote strong{color:var(--accent);font-style:normal;font-weight:600}
-.def-source{font-size:13px;color:var(--text3);padding-top:16px;border-top:1px solid var(--border);margin-top:16px}
 
 #process{padding:80px 0;border-top:1px solid var(--border)}
 .steps{display:flex;flex-direction:column;gap:0;margin-top:40px}
@@ -93,8 +93,8 @@ section{padding:100px 0}
 .step-content{display:flex;flex-direction:column;gap:8px}
 .step-title{font-family:var(--head);font-size:17px;font-weight:600;color:var(--text)}
 .step-text{font-size:14px;color:var(--text2);line-height:1.75}
-.step-tag{font-size:12px;color:var(--text3);letter-spacing:.06em;padding:4px 10px;border:1px solid var(--border);border-radius:2px;align-self:flex-start;margin-top:4px}
 
+/* Pyramid */
 #value-pyramid{padding:80px 0;border-top:1px solid var(--border)}
 .pyramid-wrap{margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
 .pyramid-row{display:flex;align-items:center;justify-content:center;gap:40px;position:relative;z-index:2}
@@ -108,37 +108,29 @@ section{padding:100px 0}
 .doc-lines{padding:16px 10px 10px;display:flex;flex-direction:column;gap:4px;flex:1}
 .doc-line{height:2px;border-radius:1px}
 .doc-line:nth-child(1){width:55%}.doc-line:nth-child(2){width:85%}.doc-line:nth-child(3){width:70%}.doc-line:nth-child(4){width:90%}.doc-line:nth-child(5){width:60%}.doc-line:nth-child(6){width:75%}.doc-line:nth-child(7){width:45%}
-.doc-rapport .doc-icon{background:linear-gradient(160deg,#171d2e,#10141f)}
-.doc-rapport .doc-icon::before{background:linear-gradient(90deg,#5588ee,#3366cc)}
-.doc-rapport .doc-line{background:rgba(85,136,238,.18)}
-.doc-devis .doc-icon{background:linear-gradient(160deg,#1d172e,#14101f)}
-.doc-devis .doc-icon::before{background:linear-gradient(90deg,#9966ee,#7744cc)}
-.doc-devis .doc-line{background:rgba(153,102,238,.18)}
-.doc-courrier .doc-icon{background:linear-gradient(160deg,#172e1d,#101f14)}
-.doc-courrier .doc-icon::before{background:linear-gradient(90deg,var(--accent),#90c840)}
-.doc-courrier .doc-line{background:rgba(200,240,96,.18)}
+.doc-rapport .doc-icon{background:linear-gradient(160deg,#171d2e,#10141f)}.doc-rapport .doc-icon::before{background:linear-gradient(90deg,#5588ee,#3366cc)}.doc-rapport .doc-line{background:rgba(85,136,238,.18)}
+.doc-devis .doc-icon{background:linear-gradient(160deg,#1d172e,#14101f)}.doc-devis .doc-icon::before{background:linear-gradient(90deg,#9966ee,#7744cc)}.doc-devis .doc-line{background:rgba(153,102,238,.18)}
+.doc-courrier .doc-icon{background:linear-gradient(160deg,#172e1d,#101f14)}.doc-courrier .doc-icon::before{background:linear-gradient(90deg,var(--accent),#90c840)}.doc-courrier .doc-line{background:rgba(200,240,96,.18)}
 .doc-stamp{position:absolute;bottom:7px;right:6px;width:20px;height:20px;border:1.5px solid rgba(200,240,96,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-15deg)}
 .doc-stamp svg{width:10px;height:10px;stroke:var(--accent);fill:none;stroke-width:2.5}
 .doc-label{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.04em;text-align:center;line-height:1.4}
 .doc-label strong{display:block;font-family:var(--head);font-size:13px;font-weight:600;color:var(--text);letter-spacing:0}
 .doc-plus{font-family:var(--head);font-size:20px;font-weight:300;color:var(--text4)}
 .pyramid-connector{padding:6px 0;display:flex;justify-content:center}
-.result-block{display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 40px;background:rgba(200,240,96,.03);border:1px solid rgba(200,240,96,.15);border-radius:var(--r2);position:relative}
+.result-block{display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 40px;background:rgba(200,240,96,.03);border:1px solid rgba(200,240,96,.15);border-radius:var(--r2);position:relative}
 .result-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(200,240,96,.06),transparent 70%);pointer-events:none;z-index:-1}
-.result-equals{font-family:var(--head);font-size:18px;color:var(--text4);font-weight:300}
-.result-num{font-family:var(--head);font-size:clamp(36px,8vw,56px);font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.03em}
+.result-num{font-family:var(--head);font-size:clamp(36px,8vw,56px);font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.03em;text-align:center}
 .result-label{font-family:var(--mono);font-size:12px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase}
 
+/* Market */
 #market{padding:80px 0;border-top:1px solid var(--border)}
 .market-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
 .market-card{padding:24px;border:1px solid var(--border);border-radius:var(--r2);background:var(--bg2);display:flex;flex-direction:column;gap:8px;transition:border-color .2s}
 .market-card:hover{border-color:var(--border3)}
 .market-num{font-family:var(--head);font-size:clamp(28px,5vw,40px);font-weight:700;color:var(--accent);letter-spacing:-.02em}
 .market-label{font-size:14px;color:var(--text2);line-height:1.6}
-.market-detail{font-size:12px;color:var(--text3);line-height:1.5;font-style:italic}
-.market-src{font-size:11px;color:var(--text4);padding-top:8px;border-top:1px solid var(--border);margin-top:auto}
-.market-note{font-size:14px;color:var(--text3);line-height:1.7;margin-top:20px;padding:16px;border:1px solid var(--border);border-radius:var(--r)}
 
+/* Model */
 #model{padding:80px 0;border-top:1px solid var(--border)}
 .model-box{margin-top:32px;padding:28px;border:1px solid rgba(200,240,96,.18);border-radius:var(--r2);background:rgba(200,240,96,.03);display:flex;flex-direction:column;gap:16px}
 .model-text{font-size:15px;color:var(--text2);line-height:1.75}
@@ -146,20 +138,22 @@ section{padding:100px 0}
 .model-highlight svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;flex-shrink:0}
 .model-highlight span{font-size:14px;color:var(--text2);line-height:1.6}
 
+/* Pricing — 3 columns */
 #pricing{padding:80px 0;border-top:1px solid var(--border)}
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
-.pricing-card{padding:24px;border:1px solid var(--border);border-radius:var(--r2);background:var(--bg2);display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:32px}
+.pricing-card{padding:24px 20px;border:1px solid var(--border);border-radius:var(--r2);background:var(--bg2);display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
 .pricing-card:hover{border-color:var(--border3)}
 .pricing-card.featured{border-color:rgba(200,240,96,.2);background:rgba(200,240,96,.03)}
 .pricing-card.featured:hover{border-color:rgba(200,240,96,.35)}
-.pricing-badge{font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono)}
-.pricing-name{font-family:var(--head);font-size:18px;font-weight:700;color:var(--text)}
-.pricing-price{font-family:var(--head);font-size:clamp(24px,4vw,32px);font-weight:700;color:var(--accent);letter-spacing:-.02em}
-.pricing-price span{font-size:14px;font-weight:400;color:var(--text3)}
-.pricing-desc{font-size:13px;color:var(--text2);line-height:1.65}
-.pricing-includes{font-size:13px;color:var(--text3);line-height:1.6;padding-top:10px;border-top:1px solid var(--border)}
-.pricing-note{font-size:13px;color:var(--text3);line-height:1.7;margin-top:16px;padding:14px;border:1px solid var(--border);border-radius:var(--r);font-style:italic}
+.pricing-name{font-family:var(--head);font-size:18px;font-weight:700;color:var(--text);padding-bottom:8px;border-bottom:1px solid var(--border)}
+.pricing-price{font-family:var(--head);font-size:clamp(20px,3.5vw,28px);font-weight:700;color:var(--accent);letter-spacing:-.02em}
+.pricing-price span{font-size:13px;font-weight:400;color:var(--text3)}
+.pricing-list{list-style:none;display:flex;flex-direction:column;gap:10px;padding:0;margin:0}
+.pricing-list li{font-size:13px;color:var(--text2);line-height:1.55;display:flex;align-items:flex-start;gap:8px}
+.pricing-list li::before{content:'•';color:var(--accent);flex-shrink:0;margin-top:0}
+.pricing-footnote{font-size:12px;color:var(--text4);line-height:1.5;padding-top:8px;border-top:1px solid var(--border);margin-top:auto;font-style:italic}
 
+/* FAQ */
 #faq{padding:80px 0;border-top:1px solid var(--border)}
 .faq-list{display:flex;flex-direction:column;gap:0;margin-top:32px}
 .faq-item{border-bottom:1px solid var(--border);overflow:hidden}
@@ -171,6 +165,7 @@ section{padding:100px 0}
 .faq-item.open .faq-a{max-height:500px}
 .faq-a-inner{padding:0 0 20px;font-size:14px;color:var(--text2);line-height:1.75}
 
+/* CTA */
 #cta-final{padding:80px 0;border-top:1px solid var(--border);text-align:center}
 .cta-box{padding:40px 32px;border:1px solid rgba(200,240,96,.18);border-radius:var(--r2);background:rgba(200,240,96,.03);display:flex;flex-direction:column;align-items:center;gap:20px}
 .cta-box .sec-title{padding-bottom:0}
@@ -189,10 +184,11 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
   section{padding:72px 0}
   #hero{padding:120px 0 72px}
   .sin-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .tension-grid,.pricing-grid{grid-template-columns:1fr;gap:8px}
+  .tension-grid{grid-template-columns:1fr;gap:8px}
   .tension-col.sans{border-radius:var(--r2) var(--r2) 0 0}
   .tension-col.avec{border-radius:0 0 var(--r2) var(--r2)}
   .market-cards{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
   .step{grid-template-columns:40px 1fr;gap:14px}
   .hero-proof{flex-direction:column;gap:12px}
   .pyramid-row{gap:20px}
@@ -217,7 +213,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <div class="wrap">
   <div class="hero-tag anim d1">Méthode d'expertise indépendante</div>
   <h1 class="hero-title anim d2">Le système connaît les règles.<br><em>Maintenant vous aussi.</em></h1>
-  <p class="hero-sub anim d3">Apprenez comment <strong>vraiment</strong> traiter vos sinistres en <span style="color:var(--accent)">60 minutes</span> et récupérer ce que vous méritez.</p>
+  <p class="hero-sub anim d3">Utilisez les règles de l'expertise pour récupérer ce que vous méritez dans vos sinistres.</p>
   <a href="diagnostic.html" class="hero-cta anim d4">Faire mon diagnostic — 3 min →</a>
   <div class="hero-proof anim d5">
     <span class="hero-proof-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Sans pré-requis</span>
@@ -231,7 +227,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <section id="sinistres">
 <div class="wrap">
   <div class="sec-tag">La réalité du terrain</div>
-  <h2 class="sec-title">Chaque sinistre a une face invisible.<br>Notre méthode vous la dévoile.</h2>
+  <h2 class="sec-title">Chaque sinistre a une face invisible.<br>L'expertise vous la dévoile.</h2>
   <div class="sin-grid">
     <div class="sin-card" data-label="Inondation"><img src="Img%20inondation.jpg" alt="Sinistre inondation" loading="lazy"></div>
     <div class="sin-card" data-label="Incendie"><img src="Img%20incendie.jpeg" alt="Sinistre incendie" loading="lazy"></div>
@@ -245,7 +241,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <section id="tension">
 <div class="wrap">
   <div class="sec-tag">Le constat</div>
-  <h2 class="sec-title">Votre assurance ne joue pas contre vous.<br>Elle applique une méthode.</h2>
+  <h2 class="sec-title">Votre assurance applique une méthode, vous aurez la même.</h2>
   <p class="sec-sub">La différence entre un dossier bien mené et un dossier sous-évalué, ce n'est pas le contrat. C'est la façon dont il est traité, construit et appliqué.</p>
   <div class="tension-grid">
     <div class="tension-col sans">
@@ -266,7 +262,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 </div>
 </section>
 
-<!-- ═══════ DÉFINITION ═══════ -->
+<!-- ═══════ DÉFINITION + ÉCHIQUIER ═══════ -->
 <section id="definition">
 <div class="wrap">
   <div class="def-box">
@@ -281,10 +277,10 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
   <div class="sec-tag">Comment ça marche</div>
   <h2 class="sec-title">Du sinistre à votre indemnisation.</h2>
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Diagnostic gratuit</div><div class="step-text">Vous répondez à 8 questions. En 3 minutes, on identifie vos zones de risque, vos leviers, et si une intervention a du sens dans votre situation.</div></div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Expertise</div><div class="step-text">Lecture de votre contrat, identification des garanties mobilisables, vérification des chiffrages, repérage des postes oubliés ou sous-évalués.</div></div></div>
-    <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Recherches et négociation</div><div class="step-text">Nous recherchons pour vous et rédigeons les courriers. Chaque poste de préjudice est argumenté, chiffré, et défendu dans votre intérêt.</div></div></div>
-    <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Indemnisation</div><div class="step-text">Vous êtes indemnisé au plus juste de votre préjudice réel. Pas au plus juste de ce que votre compagnie d'assurance voulait payer.</div></div></div>
+    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Analyse</div><div class="step-text">Diagnostic de votre situation, des enjeux et de vos opportunités. Vous identifiez les zones d'ombre, vos leviers, et si une intervention aura de l'impact.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Expertise</div><div class="step-text">Application des méthodes d'expertise, estimation, recommandation. Un seul document centralise l'ensemble des éléments et des enjeux.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Pouvoir</div><div class="step-text">Vous saurez comparer, utiliser les termes techniques, collecter les pièces décisives.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Indemnisation</div><div class="step-text">Vous êtes indemnisé au plus juste de votre préjudice en un minimum de temps. Une fois acquise la méthode peut être répétée autant de fois que nécessaire.</div></div></div>
   </div>
 </div>
 </section>
@@ -305,9 +301,8 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
     <div class="pyramid-connector"><svg width="40" height="36" viewBox="0 0 40 36" fill="none"><path d="M20 0 L20 28" stroke="rgba(200,240,96,.25)" stroke-width="1" stroke-dasharray="4 3"/><path d="M14 22 L20 30 L26 22" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg></div>
     <div class="result-block">
       <div class="result-glow"></div>
-      <div class="result-equals">=</div>
       <div class="result-num">+15 à 30%</div>
-      <div class="result-label">d'indemnité en plus (moyenne)</div>
+      <div class="result-label">d'indemnité en plus</div>
     </div>
   </div>
 </div>
@@ -331,7 +326,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <section id="model">
 <div class="wrap">
   <div class="sec-tag">Le modèle</div>
-  <h2 class="sec-title">Rémunéré au résultat.<br>L'alignement de nos intérêts.</h2>
+  <h2 class="sec-title">Rémunéré au résultat. L'alignement de nos intérêts.</h2>
   <div class="model-box">
     <div class="model-text">Nous ne vous demandons pas de nous faire confiance sur parole. Vous pourrez juger sur les résultats que vous obtiendrez. Si rien n'est obtenu ou débloqué, vous êtes remboursé.</div>
     <div class="model-highlight"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Pour les sinistres à fort enjeux, nos honoraires sont calculés selon vos conditions d'assurance.</span></div>
@@ -339,39 +334,43 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 </div>
 </section>
 
-<!-- ═══════ PRICING ═══════ -->
+<!-- ═══════ PRICING — 3 COLONNES ═══════ -->
 <section id="pricing">
 <div class="wrap">
   <div class="sec-tag">La formule</div>
-  <h2 class="sec-title">Les étapes de notre mission<br>adaptées à votre situation.</h2>
+  <h2 class="sec-title">Les étapes de notre mission adaptées à votre situation.</h2>
   <div class="pricing-grid">
     <div class="pricing-card">
-      <div class="pricing-badge">Étape 1</div>
-      <div class="pricing-name">Diagnostic</div>
+      <div class="pricing-name">Essentiel</div>
       <div class="pricing-price">Gratuit</div>
-      <div class="pricing-desc">8 questions en 3 minutes. Identification de vos zones de risque et de vos leviers.</div>
-      <div class="pricing-includes">En ligne — sans engagement</div>
-    </div>
-    <div class="pricing-card">
-      <div class="pricing-badge">Étape 2</div>
-      <div class="pricing-name">Entretien préalable</div>
-      <div class="pricing-price">Gratuit <span>· 30 min</span></div>
-      <div class="pricing-desc">Nous définissons votre besoin et les opportunités de la méthode dans votre situation.</div>
-      <div class="pricing-includes">Par téléphone ou visio</div>
+      <ul class="pricing-list">
+        <li>Diagnostic XPR</li>
+        <li>Briefing 15-30 min avec Maxime</li>
+        <li>Identification des enjeux</li>
+        <li>Ebook</li>
+      </ul>
     </div>
     <div class="pricing-card featured">
-      <div class="pricing-badge">Étape 3</div>
-      <div class="pricing-name">Expertise + Rapport</div>
-      <div class="pricing-price">400€ <span>H.T.</span></div>
-      <div class="pricing-desc">Vous possédez votre rapport, votre chiffrage, vos courriers et devis pour poser la meilleure réclamation possible en un minimum de temps.</div>
-      <div class="pricing-includes">Expertise 60 min · Rapport · Recherche · Support</div>
+      <div class="pricing-name">Advanced</div>
+      <div class="pricing-price">À partir de 400€ <span>H.T.</span></div>
+      <ul class="pricing-list">
+        <li>Expertise 60-90 min avec Maxime</li>
+        <li>Rapport</li>
+        <li>Estimation</li>
+        <li>Recommandations</li>
+        <li>Stratégie</li>
+      </ul>
     </div>
     <div class="pricing-card featured">
-      <div class="pricing-badge">Étape 4</div>
-      <div class="pricing-name">Suivi 30 jours</div>
-      <div class="pricing-price">Inclus <span>dans l'offre</span></div>
-      <div class="pricing-desc">Fourniture de courriers, mails et demande de devis sur mesure via canal sécurisé entre vous et nous.</div>
-      <div class="pricing-includes">Compris dans l'expertise à partir de 400€ H.T.</div>
+      <div class="pricing-name">Expert</div>
+      <div class="pricing-price">550€ <span>H.T.</span></div>
+      <ul class="pricing-list">
+        <li>Advanced +</li>
+        <li>Communications</li>
+        <li>Sélection devis</li>
+        <li>Suivi ad finem</li>
+      </ul>
+      <div class="pricing-footnote">Offre destinée aux dossiers entre 0 et 30 000€ de dommage.</div>
     </div>
   </div>
 </div>
@@ -385,7 +384,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
   <div class="faq-list" id="faq-list">
     <div class="faq-item"><button class="faq-q" type="button">C'est quoi la différence entre l'expert de l'assurance et un expert d'assuré ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">L'expert d'assurance est mandaté et payé par votre compagnie. Son rapport détermine ce qu'elle va vous verser. L'expert d'assuré est mandaté par vous. Il défend vos intérêts, pas ceux de la compagnie. Ce sont deux rôles opposés — et vous avez le droit d'avoir le vôtre.</div></div></div>
     <div class="faq-item"><button class="faq-q" type="button">Est-ce que ça va braquer ma compagnie d'assurance si je fais appel à vous ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">Non. La contre-expertise est un droit prévu par le Code des assurances. Les compagnies y sont habituées. Ce qui change, c'est qu'elles savent qu'en face, quelqu'un lit le contrat aussi bien qu'elles. C'est exactement le but.</div></div></div>
-    <div class="faq-item"><button class="faq-q" type="button">Combien ça coûte si mon dossier n'aboutit pas ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">L'expertise ponctuelle est à 400€ H.T. et inclut 30 jours de représentation. Pour les sinistres à fort enjeux, nos honoraires sont calculés selon vos conditions d'assurance. Si rien n'est obtenu ou débloqué, vous êtes remboursé.</div></div></div>
+    <div class="faq-item"><button class="faq-q" type="button">Combien ça coûte si mon dossier n'aboutit pas ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">L'expertise ponctuelle est à partir de 400€ H.T. Pour les sinistres à fort enjeux, nos honoraires sont calculés selon vos conditions d'assurance. Si rien n'est obtenu ou débloqué, vous êtes remboursé.</div></div></div>
     <div class="faq-item"><button class="faq-q" type="button">Mon sinistre date de plusieurs mois — c'est trop tard ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">Pas nécessairement. Tant que vous n'avez pas accepté l'offre d'indemnisation ou que vous découvrez des aggravations, une réouverture de dossier est possible — mais il faut savoir comment. Le délai de prescription est de 2 ans (Code des assurances). Plus tôt on intervient, plus on a de marge. Mais il n'est probablement pas trop tard.</div></div></div>
     <div class="faq-item"><button class="faq-q" type="button">Pourquoi un diagnostic en ligne plutôt qu'un appel directement ?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a"><div class="faq-a-inner">Les 8 questions suffisent pour savoir si votre situation a du potentiel. Ça vous prend 3 minutes, c'est gratuit, et ça nous permet d'arriver préparé si on se parle ensuite. Pas de perte de temps des deux côtés.</div></div></div>
   </div>
@@ -410,14 +409,12 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <footer><div class="wrap">XPR — Expertise Privée · Méthode d'expertise indépendante · Ce site ne constitue pas un conseil juridique.<br>SAS XPR - FRANCE - RCS 930621446</div></footer>
 
 <script>
-// Anti-Cloudflare: build mailto via JS so email obfuscation cannot corrupt it
 (function(){
   var u='gestion';var d='xpr-conseils.com';var s='Demande de diagnostic';
   var a=document.getElementById('mail-btn');
   if(a){a.href='mai'+'lto:'+u+'@'+d+'?subject='+encodeURIComponent(s);}
 })();
 
-// FAQ toggle
 document.querySelectorAll('#faq-list .faq-q').forEach(function(btn){
   btn.addEventListener('click', function(e){
     e.preventDefault();
@@ -428,7 +425,6 @@ document.querySelectorAll('#faq-list .faq-q').forEach(function(btn){
   });
 });
 
-// Scroll animations
 var observer = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting){
