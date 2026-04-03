@@ -78,9 +78,7 @@ section{padding:100px 0}
 .tension-item svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;stroke-width:2;fill:none}
 .tension-item.bad svg{stroke:var(--red)}.tension-item.good svg{stroke:var(--accent)}
 
-/* Chess background */
-#definition{padding:60px 0 80px;border-top:1px solid var(--border);position:relative;overflow:hidden}
-#definition::before{content:'';position:absolute;top:50%;left:50%;width:100%;height:160%;transform:translate(-50%,-50%);background:url('Chest.jpg') center center/cover no-repeat;opacity:.15;filter:grayscale(30%);pointer-events:none;mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.8) 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.8) 20%,transparent 70%)}
+#definition{padding:60px 0 80px;border-top:1px solid var(--border)}
 .def-box{padding:28px;background:rgba(17,17,17,.85);border:1px solid var(--border2);border-radius:var(--r2);position:relative;z-index:2}
 .def-quote{font-family:var(--head);font-size:17px;font-weight:500;line-height:1.75;color:var(--text2);font-style:italic}
 .def-quote strong{color:var(--accent);font-style:normal;font-weight:600}
@@ -132,7 +130,7 @@ section{padding:100px 0}
 
 /* Model */
 #model{padding:80px 0;border-top:1px solid var(--border)}
-.model-box{margin-top:32px;padding:28px;border:1px solid rgba(200,240,96,.18);border-radius:var(--r2);background:rgba(200,240,96,.03);display:flex;flex-direction:column;gap:16px}
+.model-box{margin-top:32px;padding:28px;border:1px solid rgba(200,240,96,.3);border-radius:var(--r2);background:rgba(200,240,96,.03);display:flex;flex-direction:column;gap:16px}
 .model-text{font-size:15px;color:var(--text2);line-height:1.75}
 .model-highlight{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--r)}
 .model-highlight svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;flex-shrink:0}
@@ -213,7 +211,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <div class="wrap">
   <div class="hero-tag anim d1">Méthode d'expertise indépendante</div>
   <h1 class="hero-title anim d2">Le système connaît les règles.<br><em>Maintenant vous aussi.</em></h1>
-  <p class="hero-sub anim d3">Utilisez les règles de l'expertise pour récupérer ce que vous méritez dans vos sinistres.</p>
+  <p class="hero-sub anim d3">Utilisez les règles de l'expertise pour récupérer temps et argent dans vos sinistres.</p>
   <a href="diagnostic.html" class="hero-cta anim d4">Faire mon diagnostic — 3 min →</a>
   <div class="hero-proof anim d5">
     <span class="hero-proof-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Sans pré-requis</span>
@@ -242,7 +240,7 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
 <div class="wrap">
   <div class="sec-tag">Le constat</div>
   <h2 class="sec-title">Votre assurance applique une méthode, vous aurez la même.</h2>
-  <p class="sec-sub">La différence entre un dossier bien mené et un dossier sous-évalué, ce n'est pas le contrat. C'est la façon dont il est traité, construit et appliqué.</p>
+  <p class="sec-sub">La différence entre un dossier satisfaisant et une indemnité décevante ce n'est pas le contrat : c'est la méthode employée.</p>
   <div class="tension-grid">
     <div class="tension-col sans">
       <div class="tension-label red">Sans méthode</div>
@@ -328,8 +326,8 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
   <div class="sec-tag">Le modèle</div>
   <h2 class="sec-title">Rémunéré au résultat. L'alignement de nos intérêts.</h2>
   <div class="model-box">
-    <div class="model-text">Nous ne vous demandons pas de nous faire confiance sur parole. Vous pourrez juger sur les résultats que vous obtiendrez. Si rien n'est obtenu ou débloqué, vous êtes remboursé.</div>
-    <div class="model-highlight"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Pour les sinistres à fort enjeux, nos honoraires sont calculés selon vos conditions d'assurance.</span></div>
+    <div class="model-text">Vous jugez sur ce que nous obtenons. Si le résultat n'est pas là, notre intervention ne vous coûtera rien.</div>
+    <div class="model-highlight"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Pour les sinistres supérieurs à 30 000 €, une analyse préliminaire est nécessaire.</span></div>
   </div>
 </div>
 </section>
@@ -365,12 +363,11 @@ footer{padding:32px;border-top:1px solid var(--border);text-align:center;font-si
       <div class="pricing-name">Expert</div>
       <div class="pricing-price">550€ <span>H.T.</span></div>
       <ul class="pricing-list">
-        <li>Advanced +</li>
-        <li>Communications</li>
-        <li>Sélection devis</li>
+        <li>Pack Advanced</li>
+        <li>Communication et support</li>
+        <li>Recherche et sélection devis</li>
         <li>Suivi ad finem</li>
       </ul>
-      <div class="pricing-footnote">Offre destinée aux dossiers entre 0 et 30 000€ de dommage.</div>
     </div>
   </div>
 </div>
